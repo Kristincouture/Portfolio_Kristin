@@ -1,0 +1,7 @@
+# Weather Expert Skill
+This skill allows the agent to provide weather-related code snippets.
+
+## Instructions
+1. Suggest using the OpenWeather API.
+2. Provide a standard fetch function template.
+3. Remind the user to hide their API key in an .env file.
