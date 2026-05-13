@@ -1,6 +1,6 @@
 import React from 'react';
 import { Layout, Typography } from 'antd';
-import GeminiChat from './GeminiChat'; // The import belongs at the top!
+import GeminiChat from './GeminiChat';
 import './App.css';
 
 const { Header, Content, Footer } = Layout;
@@ -8,24 +8,74 @@ const { Title } = Typography;
 
 function App() {
   return (
-    <Layout className="layout" style={{ minHeight: '100vh', backgroundColor: '#fffdfa' }}>
-      <Header style={{ background: '#fff', borderBottom: '1px solid #d4af37', textAlign: 'center', padding: '20px 0', height: 'auto' }}>
-        <Title level={2} style={{ color: '#b8860b', margin: 0, letterSpacing: '2px' }}>
-          KRISTINA G. ZAYIMTSYAN COUTURE
-        </Title>
+    <Layout id="top" className="couture-app">
+      <Header className="couture-header">
+        <div className="couture-header__inner">
+          <div className="couture-brand">
+            <Title level={2} className="couture-brand__title">
+              Kristina G. Zayimtsyan Couture
+            </Title>
+            <p className="couture-brand__tagline">
+              Armenian Tracery &amp; Eco-Dye Atelier
+            </p>
+          </div>
+          <nav className="couture-nav" aria-label="Primary">
+            <a className="couture-nav__link" href="#gallery">
+              Gallery
+            </a>
+            <a className="couture-nav__link" href="#cv">
+              CV
+            </a>
+          </nav>
+        </div>
       </Header>
 
-      <Content style={{ padding: '50px' }}>
-        <div className="site-layout-content">
-          {/* This is your new AI Assistant! */}
+      <Content className="couture-main">
+        <div className="couture-main__inner site-layout-content">
+          <header className="couture-hero">
+            <div className="couture-hero__ornament" aria-hidden="true">
+              ✦
+            </div>
+            <p className="couture-hero__lead">
+              Bespoke textiles where Armenian ornamental rhythm meets
+              plant-based colour—each piece composed as couture, with the
+              patience of the atelier.
+            </p>
+          </header>
+
           <GeminiChat />
-          
-          {/* Your other portfolio sections can go here */}
+
+          <section id="gallery" className="couture-section" aria-labelledby="gallery-heading">
+            <h2 id="gallery-heading" className="couture-section__heading">
+              Gallery
+            </h2>
+            <p className="couture-section__text">
+              A curated view of couture silhouettes, tracery-led surfaces, and
+              eco-dyed palettes will appear here. For commissions or lookbook
+              inquiries, use the assistant above or reach out through your
+              preferred channel.
+            </p>
+          </section>
+
+          <section id="cv" className="couture-section" aria-labelledby="cv-heading">
+            <h2 id="cv-heading" className="couture-section__heading">
+              Curriculum Vitae
+            </h2>
+            <p className="couture-section__text">
+              Generate a tailored professional summary with the atelier
+              assistant, or keep a static PDF in your deployment (for example{' '}
+              <code className="couture-section__mono">/cv.pdf</code>
+              ) and link it below when ready.
+            </p>
+            <a className="couture-section__link" href="#top">
+              Back to top
+            </a>
+          </section>
         </div>
       </Content>
 
-      <Footer style={{ textAlign: 'center', color: '#b8860b', background: '#fff' }}>
-        Kristina G. Zayimtsyan ©2026 Created with Passion
+      <Footer className="couture-footer">
+        Kristina G. Zayimtsyan <span>© 2026</span> — Couture &amp; Atelier
       </Footer>
     </Layout>
   );

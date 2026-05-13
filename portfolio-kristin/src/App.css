@@ -1,38 +1,226 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500&display=swap');
+
+:root {
+  --couture-ink: #0f0c0d;
+  --couture-burgundy: #1a0a10;
+  --couture-wine: #2d121c;
+  --couture-ivory: #f4efe8;
+  --couture-parchment: #ebe4d9;
+  --couture-gold: #b8863d;
+  --couture-gold-soft: #c9a86a;
+  --couture-brass: #8b6914;
+  --couture-sage: #5c6b56;
+  --couture-sage-muted: rgba(92, 107, 86, 0.18);
+  --couture-line: rgba(184, 134, 61, 0.35);
+  --couture-tracery: rgba(184, 134, 61, 0.12);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.couture-app.ant-layout {
   min-height: 100vh;
+  background: var(--couture-ivory);
+  color: var(--couture-ink);
+  font-family: 'Jost', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+}
+
+.couture-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: auto !important;
+  padding: 1.25rem 1.5rem 1rem !important;
+  background: linear-gradient(180deg, var(--couture-burgundy) 0%, var(--couture-wine) 100%) !important;
+  border-bottom: 1px solid var(--couture-line);
+  box-shadow: 0 12px 40px rgba(15, 12, 13, 0.25);
+}
+
+.couture-header__inner {
+  max-width: 1100px;
+  margin: 0 auto;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  gap: 1rem 2rem;
 }
 
-.App-link {
-  color: #61dafb;
+.couture-brand {
+  text-align: left;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.couture-brand__title.ant-typography {
+  margin: 0 !important;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(1.15rem, 3vw, 1.65rem) !important;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--couture-ivory) !important;
+  line-height: 1.25 !important;
+}
+
+.couture-brand__tagline {
+  margin: 0.5rem 0 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--couture-gold-soft);
+  font-weight: 400;
+}
+
+.couture-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem 1.25rem;
+  flex-wrap: wrap;
+}
+
+.couture-nav__link {
+  position: relative;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--couture-parchment);
+  text-decoration: none;
+  padding: 0.35rem 0;
+  transition: color 0.2s ease;
+}
+
+.couture-nav__link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background: var(--couture-gold);
+  transition: width 0.25s ease;
+}
+
+.couture-nav__link:hover {
+  color: var(--couture-gold-soft);
+}
+
+.couture-nav__link:hover::after {
+  width: 100%;
+}
+
+.couture-main {
+  padding: 2.5rem 1.5rem 4rem !important;
+  background:
+    radial-gradient(ellipse 120% 80% at 50% -20%, var(--couture-tracery), transparent 55%),
+    linear-gradient(180deg, var(--couture-ivory) 0%, var(--couture-parchment) 100%);
+}
+
+.couture-main__inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.couture-hero {
+  text-align: center;
+  padding: 0.5rem 0 2.5rem;
+  border-bottom: 1px solid var(--couture-line);
+  margin-bottom: 2.5rem;
+}
+
+.couture-hero__ornament {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.75rem;
+  color: var(--couture-brass);
+  line-height: 1;
+  margin-bottom: 0.75rem;
+  opacity: 0.85;
+}
+
+.couture-hero__lead {
+  margin: 0;
+  max-width: 36rem;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--couture-wine);
+  font-weight: 300;
+}
+
+.couture-section {
+  scroll-margin-top: 6.5rem;
+  padding: 2.5rem 0;
+  border-bottom: 1px solid var(--couture-line);
+}
+
+.couture-section:last-of-type {
+  border-bottom: none;
+}
+
+.couture-section__heading {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--couture-wine);
+  margin: 0 0 1rem;
+}
+
+.couture-section__text {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--couture-ink);
+  opacity: 0.88;
+  max-width: 38rem;
+}
+
+.couture-section__link {
+  display: inline-block;
+  margin-top: 1.25rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--couture-brass);
+  text-decoration: none;
+  border-bottom: 1px solid var(--couture-gold);
+  padding-bottom: 0.15rem;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.couture-section__link:hover {
+  color: var(--couture-wine);
+  border-color: var(--couture-wine);
+}
+
+.couture-section__mono {
+  font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, monospace;
+  font-size: 0.85em;
+  opacity: 0.88;
+}
+
+.couture-footer.ant-layout-footer {
+  text-align: center;
+  padding: 1.75rem 1rem !important;
+  background: var(--couture-burgundy) !important;
+  color: var(--couture-parchment) !important;
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border-top: 1px solid var(--couture-line);
+}
+
+.couture-footer span {
+  color: var(--couture-gold-soft);
+}
+
+@media (max-width: 640px) {
+  .couture-header__inner {
+    flex-direction: column;
+    align-items: flex-start;
   }
-  to {
-    transform: rotate(360deg);
+
+  .couture-nav {
+    width: 100%;
+    justify-content: flex-start;
   }
 }
