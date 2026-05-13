@@ -1,6 +1,13 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import axios from 'axios';
-import { Button, Card, Input, Typography, Alert, Space } from 'antd';
+import { Button, Card, Input, Typography, Alert, Space, Select } from 'antd';
+
+import {
+  DEFAULT_DID_PHOTO_FILE,
+  GALLERY_PHOTO_FILENAMES,
+  getAbsolutePhotoUrlForDid,
+  getInitialDidImageUrl,
+} from './siteMedia';
 
 const { Title, Paragraph, Text } = Typography;
 const { TextArea } = Input;
@@ -31,15 +38,16 @@ function didAuthorizationHeader(): string | null {
   return null;
 }
 
-function getSilkPaintingSourceUrl(): string {
-  const fromEnv = process.env.REACT_APP_SILK_PAINTING_URL?.trim();
-  if (fromEnv) return fromEnv;
-  return '';
+function isValidSourceUrl(url: string): boolean {
+  const u = url.trim();
+  if (u.startsWith('https://')) return true;
+  if (u.startsWith('http://localhost') || u.startsWith('http://127.0.0.1')) return true;
+  return false;
 }
 
 const DEFAULT_SCRIPT =
   'This is a short narration for my audio and video quiz practice, ' +
-  'using my four-meter silk painting as the visual source.';
+  'using a photograph from my atelier gallery as the visual source.';
 
 type TalkStatus = 'created' | 'started' | 'done' | 'error' | string;
 
@@ -59,8 +67,12 @@ const POLL_MS = 3000;
 const MAX_POLL_MS = 5 * 60 * 1000;
 
 const VideoGen: React.FC = () => {
+  const envImage = Boolean(process.env.REACT_APP_SILK_PAINTING_URL?.trim());
+  const [selectedGalleryFile, setSelectedGalleryFile] = useState<string | undefined>(
+    envImage ? undefined : DEFAULT_DID_PHOTO_FILE
+  );
   const [script, setScript] = useState(DEFAULT_SCRIPT);
-  const [imageUrl, setImageUrl] = useState(getSilkPaintingSourceUrl);
+  const [imageUrl, setImageUrl] = useState(getInitialDidImageUrl);
   const [talkId, setTalkId] = useState<string | null>(null);
   const [status, setStatus] = useState<string>('');
   const [resultUrl, setResultUrl] = useState<string | null>(null);
@@ -109,6 +121,11 @@ const VideoGen: React.FC = () => {
     [clearPoll]
   );
 
+  const handleGalleryPhotoChange = (filename: string) => {
+    setSelectedGalleryFile(filename);
+    setImageUrl(getAbsolutePhotoUrlForDid(filename));
+  };
+
   const handleGenerate = async () => {
     setError(null);
     setResultUrl(null);
@@ -125,11 +142,10 @@ const VideoGen: React.FC = () => {
     }
 
     const source_url = imageUrl.trim();
-    if (!source_url.startsWith('https://')) {
+    if (!isValidSourceUrl(source_url)) {
       setError(
-        'source_url must be a public HTTPS image URL (jpg/png) that D-ID can download. ' +
-          'Localhost will not work. Put the file in public/ on Vercel and set REACT_APP_SILK_PAINTING_URL, ' +
-          'or host the image on cloud storage with an https link.'
+        'source_url must be https, or http://localhost (or 127.0.0.1) while testing. ' +
+          'D-ID must be able to fetch the image—after you deploy, use your live site URL or set REACT_APP_SILK_PAINTING_URL.'
       );
       return;
     }
@@ -194,8 +210,8 @@ const VideoGen: React.FC = () => {
     <Card style={{ maxWidth: 720, margin: '24px auto' }}>
       <Title level={4}>D-ID video (talk) — homework practice</Title>
       <Paragraph type="secondary">
-        Uses the{' '}
-        <Text code>Create Talk</Text> API: your silk painting as <Text code>source_url</Text>, text
+        Uses the <Text code>Create Talk</Text> API: a public <Text code>source_url</Text> image (defaults
+        to <Text code>{DEFAULT_DID_PHOTO_FILE}</Text> from your <Text code>public/photos</Text> folder), text
         script for speech, then polling until <Text code>done</Text> and <Text code>result_url</Text>.
       </Paragraph>
 
@@ -211,8 +227,8 @@ const VideoGen: React.FC = () => {
               studio), or only <Text code>REACT_APP_DID_API_KEY</Text> for key-as-username with an empty password.
             </li>
             <li>
-              <Text code>REACT_APP_SILK_PAINTING_URL</Text> — public <Text strong>https</Text> URL
-              to your painting (required for D-ID to fetch the image).
+              Optional: <Text code>REACT_APP_SILK_PAINTING_URL</Text> — full <Text strong>https</Text> image URL
+              to override the gallery default (for example a CDN link).
             </li>
           </ul>
         }
@@ -220,11 +236,29 @@ const VideoGen: React.FC = () => {
 
       <Space direction="vertical" size="middle" style={{ width: '100%' }}>
         <div>
-          <Text strong>Silk painting image URL</Text>
+          <Text strong>Gallery photo for D-ID</Text>
+          <Select
+            showSearch
+            optionFilterProp="label"
+            placeholder="Choose a photo from public/photos"
+            value={selectedGalleryFile}
+            onChange={handleGalleryPhotoChange}
+            options={GALLERY_PHOTO_FILENAMES.map((name) => ({
+              value: name,
+              label: name,
+            }))}
+            style={{ width: '100%', marginTop: 6 }}
+          />
+        </div>
+        <div>
+          <Text strong>Image URL (D-ID source_url)</Text>
           <Input
-            placeholder="https://your-cdn.example.com/silk-painting.jpg"
+            placeholder="https://… or http://localhost:3000/photos/…"
             value={imageUrl}
-            onChange={(e) => setImageUrl(e.target.value)}
+            onChange={(e) => {
+              setImageUrl(e.target.value);
+              setSelectedGalleryFile(undefined);
+            }}
             style={{ marginTop: 6 }}
           />
         </div>

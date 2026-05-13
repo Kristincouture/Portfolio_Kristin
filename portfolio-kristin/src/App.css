@@ -49,21 +49,25 @@
   text-align: left;
 }
 
-.couture-brand__title.ant-typography {
-  margin: 0 !important;
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-weight: 500;
-  font-size: clamp(1.15rem, 3vw, 1.65rem) !important;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--couture-ivory) !important;
-  line-height: 1.25 !important;
+.couture-brand--link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.couture-brand__logo {
+  display: block;
+  height: clamp(40px, 8vw, 52px);
+  width: auto;
+  max-width: min(220px, 55vw);
+  object-fit: contain;
+  object-position: left center;
 }
 
 .couture-brand__tagline {
-  margin: 0.5rem 0 0;
-  font-size: 0.72rem;
-  letter-spacing: 0.22em;
+  margin: 0.45rem 0 0;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--couture-gold-soft);
   font-weight: 400;
@@ -123,15 +127,6 @@
   padding: 0.5rem 0 2.5rem;
   border-bottom: 1px solid var(--couture-line);
   margin-bottom: 2.5rem;
-}
-
-.couture-hero__ornament {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.75rem;
-  color: var(--couture-brass);
-  line-height: 1;
-  margin-bottom: 0.75rem;
-  opacity: 0.85;
 }
 
 .couture-hero__lead {
@@ -196,6 +191,54 @@
   font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, monospace;
   font-size: 0.85em;
   opacity: 0.88;
+}
+
+.couture-gallery {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
+  gap: 10px;
+}
+
+.couture-gallery__cell {
+  min-width: 0;
+}
+
+.couture-gallery .couture-gallery__item {
+  width: 100%;
+  height: 168px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.couture-gallery .ant-image {
+  width: 100%;
+  height: 168px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.couture-gallery .ant-image-img {
+  height: 168px !important;
+  object-fit: cover;
+}
+
+.couture-cv-download.ant-btn-primary {
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  background: var(--couture-wine) !important;
+  border-color: var(--couture-gold) !important;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  height: auto;
+  padding: 0.65rem 1.25rem;
+}
+
+.couture-cv-download.ant-btn-primary:hover {
+  background: var(--couture-burgundy) !important;
+  border-color: var(--couture-gold-soft) !important;
+  color: var(--couture-ivory) !important;
 }
 
 .couture-footer.ant-layout-footer {

@@ -1,24 +1,26 @@
 import React from 'react';
-import { Layout, Typography } from 'antd';
+import { Layout, Button } from 'antd';
 import GeminiChat from './GeminiChat';
+import VideoGen from './VideoGen';
+import Gallery from './Gallery';
+import { LOGO_SRC, CV_ORIGINAL_HREF } from './siteMedia';
 import './App.css';
 
 const { Header, Content, Footer } = Layout;
-const { Title } = Typography;
 
 function App() {
   return (
     <Layout id="top" className="couture-app">
       <Header className="couture-header">
         <div className="couture-header__inner">
-          <div className="couture-brand">
-            <Title level={2} className="couture-brand__title">
-              Kristina G. Zayimtsyan Couture
-            </Title>
-            <p className="couture-brand__tagline">
-              Armenian Tracery &amp; Eco-Dye Atelier
-            </p>
-          </div>
+          <a href="#top" className="couture-brand couture-brand--link">
+            <img
+              src={LOGO_SRC}
+              alt="Kristina G. Zayimtsyan Couture — KGZ"
+              className="couture-brand__logo"
+            />
+            <p className="couture-brand__tagline">Armenian Tracery &amp; Eco-Dye Atelier</p>
+          </a>
           <nav className="couture-nav" aria-label="Primary">
             <a className="couture-nav__link" href="#gallery">
               Gallery
@@ -33,9 +35,6 @@ function App() {
       <Content className="couture-main">
         <div className="couture-main__inner site-layout-content">
           <header className="couture-hero">
-            <div className="couture-hero__ornament" aria-hidden="true">
-              ✦
-            </div>
             <p className="couture-hero__lead">
               Bespoke textiles where Armenian ornamental rhythm meets
               plant-based colour—each piece composed as couture, with the
@@ -45,16 +44,17 @@ function App() {
 
           <GeminiChat />
 
+          <VideoGen />
+
           <section id="gallery" className="couture-section" aria-labelledby="gallery-heading">
             <h2 id="gallery-heading" className="couture-section__heading">
               Gallery
             </h2>
             <p className="couture-section__text">
-              A curated view of couture silhouettes, tracery-led surfaces, and
-              eco-dyed palettes will appear here. For commissions or lookbook
-              inquiries, use the assistant above or reach out through your
-              preferred channel.
+              Works on silk, paper, and performance pieces from the atelier. Click an image to
+              open a larger preview.
             </p>
+            <Gallery />
           </section>
 
           <section id="cv" className="couture-section" aria-labelledby="cv-heading">
@@ -62,14 +62,23 @@ function App() {
               Curriculum Vitae
             </h2>
             <p className="couture-section__text">
-              Generate a tailored professional summary with the atelier
-              assistant, or keep a static PDF in your deployment (for example{' '}
-              <code className="couture-section__mono">/cv.pdf</code>
-              ) and link it below when ready.
+              Download the original CV as a PDF, or use the assistant above to draft tailored
+              text for applications and commissions.
             </p>
-            <a className="couture-section__link" href="#top">
-              Back to top
-            </a>
+            <Button
+              type="primary"
+              size="large"
+              href={CV_ORIGINAL_HREF}
+              className="couture-cv-download"
+              download
+            >
+              Download my Original CV
+            </Button>
+            <div>
+              <a className="couture-section__link" href="#top">
+                Back to top
+              </a>
+            </div>
           </section>
         </div>
       </Content>
