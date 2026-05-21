@@ -5,7 +5,6 @@ const NewPortfolio = () => {
   const [message, setMessage] = useState('');
   const [submitted, setSubmitted] = useState(false);
   
-  // Audio playback state monitoring
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
@@ -17,7 +16,6 @@ const NewPortfolio = () => {
     setMessage('');
   };
 
-  // Toggle background track playback
   const toggleAudio = () => {
     if (!audioRef.current) return;
     
@@ -37,7 +35,6 @@ const NewPortfolio = () => {
   return (
     <div style={{ backgroundColor: '#F9F8F6', minHeight: '100vh', fontFamily: 'sans-serif', color: '#2D2D2D' }}>
       
-      {/* Native Browser Audio Resource Hook */}
       <audio 
         ref={audioRef} 
         src="/photos/intro-voice.mp3" 
@@ -56,7 +53,7 @@ const NewPortfolio = () => {
         </div>
         <nav style={{ display: 'flex', gap: '30px' }}>
           <a href="#about" style={{ color: '#555', textDecoration: 'none', fontWeight: '500', fontSize: '14px' }}>About</a>
-          <a href="#ai-voice-section" style={{ color: '#555', textDecoration: 'none', fontWeight: '500', fontSize: '14px' }}>AI Audio Profile</a>
+          <a href="#ai-voice-section" style={{ color: '#555', textDecoration: 'none', fontWeight: '500', fontSize: '14px' }}>AI Audio</a>
           <a href="#cv" style={{ color: '#555', textDecoration: 'none', fontWeight: '500', fontSize: '14px' }}>CV / Experience</a>
           <a href="#contact" style={{ backgroundColor: '#3D1C22', color: '#FFF', padding: '8px 16px', borderRadius: '4px', textDecoration: 'none', fontWeight: '600', fontSize: '13px' }}>Contact Me</a>
         </nav>
@@ -94,7 +91,7 @@ const NewPortfolio = () => {
         </div>
       </section>
 
-      {/* --- INTERACTIVE VOICE EXPERIMENTAL SECTION --- */}
+      {/* --- AI VOICE EXPERIMENTAL SECTION --- */}
       <section id="ai-voice-section" style={{ backgroundColor: '#FFF', borderTop: '1px solid #EAEAEA', borderBottom: '1px solid #EAEAEA', padding: '60px 0' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 20px' }}>
           <div style={{ textAlign: 'center', marginBottom: '40px' }}>
@@ -113,7 +110,7 @@ const NewPortfolio = () => {
                   style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }} 
                 />
                 {isPlaying && (
-                  <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(61, 28, 34, 0.15)', display: 'flex', alignItems: 'center', justifycontent: 'center' }}>
+                  <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(61, 28, 34, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <span style={{ color: '#FFF', fontSize: '12px', fontWeight: 'bold', letterSpacing: '1px', background: '#3D1C22', padding: '4px 10px', borderRadius: '12px' }}>🗣️ STREAMING AUDIO</span>
                   </div>
                 )}
@@ -253,7 +250,7 @@ const NewPortfolio = () => {
         </div>
       </section>
 
-      {/* --- STABLE FOOTER CONTROLLER --- */}
+      {/* --- FOOTER FIXED AND ALIGNED --- */}
       <footer style={{ backgroundColor: '#3D1C22', color: '#FFF', textAlign: 'center', padding: '25px', fontSize: '13px' }}>
         © 2026 Kristina G. Zayimtsyan Couture — Frontend Engineer Portfolio.
       </footer>
