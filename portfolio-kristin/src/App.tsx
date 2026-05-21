@@ -5,7 +5,7 @@ const NewPortfolio = () => {
   const [message, setMessage] = useState('');
   const [submitted, setSubmitted] = useState(false);
   
-  // Audio state tracking
+  // Audio playback state monitoring
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
@@ -17,7 +17,7 @@ const NewPortfolio = () => {
     setMessage('');
   };
 
-  // Toggle audio play/pause
+  // Toggle background track playback
   const toggleAudio = () => {
     if (!audioRef.current) return;
     
@@ -25,7 +25,7 @@ const NewPortfolio = () => {
       audioRef.current.pause();
       setIsPlaying(false);
     } else {
-      audioRef.current.play().catch(err => console.log("Audio play interrupted:", err));
+      audioRef.current.play().catch(err => console.log("Audio presentation stream interrupted:", err));
       setIsPlaying(true);
     }
   };
@@ -37,7 +37,7 @@ const NewPortfolio = () => {
   return (
     <div style={{ backgroundColor: '#F9F8F6', minHeight: '100vh', fontFamily: 'sans-serif', color: '#2D2D2D' }}>
       
-      {/* Hidden HTML5 Audio Element */}
+      {/* Native Browser Audio Resource Hook */}
       <audio 
         ref={audioRef} 
         src="/photos/intro-voice.mp3" 
@@ -94,33 +94,33 @@ const NewPortfolio = () => {
         </div>
       </section>
 
-      {/* --- AI VOICE PRESENTATION COMPONENT --- */}
+      {/* --- INTERACTIVE VOICE EXPERIMENTAL SECTION --- */}
       <section id="ai-voice-section" style={{ backgroundColor: '#FFF', borderTop: '1px solid #EAEAEA', borderBottom: '1px solid #EAEAEA', padding: '60px 0' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 20px' }}>
           <div style={{ textAlign: 'center', marginBottom: '40px' }}>
             <h2 style={{ color: '#3D1C22', fontSize: '26px', fontWeight: '700' }}>AI Voice Integration Overview</h2>
-            <p style={{ color: '#666', fontSize: '15px' }}>Click the interactive controller below to stream my technical background details.</p>
+            <p style={{ color: '#666', fontSize: '15px' }}>Click the custom button controller to experience real-time audio asset rendering.</p>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1.2fr', gap: '40px', alignItems: 'center' }}>
             
-            {/* Interactive Portrait Presentation Card */}
+            {/* Interactive Profile Deck */}
             <div style={{ background: '#FAF9F6', border: '1px solid #E0E0E0', borderRadius: '12px', padding: '30px', textAlign: 'center', boxShadow: '0 4px 12px rgba(0,0,0,0.03)' }}>
               <div style={{ position: 'relative', width: '220px', height: '220px', margin: '0 auto 20px auto', borderRadius: '50%', overflow: 'hidden', border: '3px solid #3D1C22', padding: '5px', backgroundColor: '#FFF' }}>
                 <img 
                   src="/photos/profile-photo.jpg" 
-                  alt="Kristina" 
+                  alt="Kristina Portrait" 
                   style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }} 
                 />
                 {isPlaying && (
-                  <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(61, 28, 34, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <span style={{ color: '#FFF', fontSize: '12px', fontWeight: 'bold', letterSpacing: '1px', background: '#3D1C22', padding: '4px 10px', borderRadius: '12px' }}>🗣️ AUDIO PLAYING</span>
+                  <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(61, 28, 34, 0.15)', display: 'flex', alignItems: 'center', justifycontent: 'center' }}>
+                    <span style={{ color: '#FFF', fontSize: '12px', fontWeight: 'bold', letterSpacing: '1px', background: '#3D1C22', padding: '4px 10px', borderRadius: '12px' }}>🗣️ STREAMING AUDIO</span>
                   </div>
                 )}
               </div>
 
               <h4 style={{ margin: '0 0 5px 0', color: '#3D1C22', fontSize: '18px', fontWeight: '700' }}>Kristina G. Zayimtsyan</h4>
-              <p style={{ margin: '0 0 20px 0', color: '#D4AF37', fontSize: '13px', fontWeight: '600', letterSpacing: '0.5px' }}>AI VOICE ASSISTANT COMPONENT</p>
+              <p style={{ margin: '0 0 20px 0', color: '#D4AF37', fontSize: '13px', fontWeight: '600', letterSpacing: '0.5px' }}>CUSTOM REUSE INTERACTION NODE</p>
               
               <button 
                 onClick={toggleAudio}
@@ -141,21 +141,21 @@ const NewPortfolio = () => {
                 }}
               >
                 {isPlaying ? (
-                  <>⏸ Stop Presentation</>
+                  <>⏸ Stop AI Voice</>
                 ) : (
                   <>🔊 Listen to My AI Voice</>
                 )}
               </button>
             </div>
 
-            {/* Content Display Card */}
+            {/* Architecture Node Overview */}
             <div style={{ backgroundColor: '#3D1C22', color: '#FFF', borderRadius: '8px', padding: '35px', minHeight: '280px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <h3 style={{ color: '#D4AF37', marginTop: 0, fontSize: '20px', letterSpacing: '0.5px' }}>System Architecture</h3>
               <p style={{ fontSize: '14px', lineHeight: '1.6', color: '#EAE9E9', margin: '0 0 20px 0' }}>
-                This production component leverages HTML5 Audio ref nodes bound to state hooks. By mounting clean `.mp3` rendering tracks rather than heavyweight video wrappers, the layout loads instantly with flawless mobile compatibility and absolute responsive styling compliance.
+                This environment leverages HTML5 Audio Reference nodes bound directly to component runtime memory hooks. By prioritizing clean text-to-speech audio pipelines instead of unoptimized streaming formats, the system load remains swift, compliant, and highly interactive.
               </p>
               <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-                {['React Hooks', 'HTML5 Audio API', 'Ref Nodes', 'Vercel CDN', 'State Controls'].map((tech) => (
+                {['React Hooks', 'HTML5 Audio API', 'Ref Tree Control', 'Vercel Deployment', 'State Automation'].map((tech) => (
                   <span key={tech} style={{ backgroundColor: 'rgba(255,255,255,0.1)', padding: '5px 12px', borderRadius: '4px', fontSize: '12px', fontWeight: '600' }}>{tech}</span>
                 ))}
               </div>
@@ -165,73 +165,73 @@ const NewPortfolio = () => {
         </div>
       </section>
 
-      {/* --- TWO-COLUMN CV --- */}
+      {/* --- PROFESSIONAL TWO-COLUMN EXP LINE --- */}
       <section id="cv" style={{ maxWidth: '1100px', margin: '60px auto', padding: '0 20px', display: 'grid', gridTemplateColumns: '1fr 2.2fr', gap: '50px' }}>
         <div>
           <h3 style={{ color: '#3D1C22', fontSize: '16px', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: '20px', borderBottom: '2px solid #3D1C22', paddingBottom: '5px' }}>Expertise & Tools</h3>
           <h4 style={{ margin: '15px 0 5px 0', fontSize: '14px', color: '#555' }}>LANGUAGES</h4>
           <p style={{ fontSize: '14px', margin: '4px 0', fontWeight: '600' }}>Armenian <span style={{ color: '#888', fontWeight: 'normal' }}>(Fluent)</span></p>
-          <p style={{ fontSize: '14px', margin: '4px 0', fontWeight: '600' }}>English <span style={{ color: '#888', fontWeight: 'normal' }}>(Professional Proficiency)</span></p>
+          <p style={{ fontSize: '14px', margin: '4px 0', fontWeight: '600' }}>English <span style={{ color: '#888', fontWeight: 'normal' }}>(Professional Working Proficiency)</span></p>
           <p style={{ fontSize: '14px', margin: '4px 0', fontWeight: '600' }}>Russian <span style={{ color: '#888', fontWeight: 'normal' }}>(Good)</span></p>
 
-          <h4 style={{ margin: '25px 0 5px 0', fontSize: '14px', color: '#555' }}>DIGITAL SKILLS</h4>
+          <h4 style={{ margin: '25px 0 5px 0', fontSize: '14px', color: '#555' }}>DIGITAL WORK</h4>
           <ul style={{ paddingLeft: '18px', margin: 0, fontSize: '13px', lineHeight: '1.6', color: '#666' }}>
-            <li>HTML5 / CSS3 / JavaScript</li>
-            <li>Adobe Photoshop & Design Systems</li>
-            <li>Rhinoceros (3dm) & Matrix 3D UI</li>
-            <li>Microsoft Office Suite</li>
+            <li>HTML5 / CSS3 / Core JavaScript</li>
+            <li>Adobe Photoshop Asset Framing</li>
+            <li>Rhinoceros 3D System Layouts</li>
+            <li>Microsoft Office Database Automation</li>
           </ul>
         </div>
 
         <div>
-          <h3 style={{ color: '#3D1C22', fontSize: '16px', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: '20px', borderBottom: '2px solid #3D1C22', paddingBottom: '5px' }}>Professional Timeline</h3>
+          <h3 style={{ color: '#3D1C22', fontSize: '16px', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: '20px', borderBottom: '2px solid #3D1C22', paddingBottom: '5px' }}>Professional History</h3>
           <div style={{ marginBottom: '30px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '5px' }}>
-              <h4 style={{ margin: 0, color: '#3D1C22', fontSize: '16px' }}>Founder & Creative Director</h4>
+              <h4 style={{ margin: 0, color: '#3D1C22', fontSize: '16px' }}>Founder & Master Designer</h4>
               <span style={{ fontSize: '13px', color: '#777', fontWeight: '600' }}>2006 — Present</span>
             </div>
             <p style={{ margin: 0, fontSize: '14px', color: '#D4AF37', fontWeight: '600' }}>Kristina G. Zayimtsyan Couture</p>
             <p style={{ fontSize: '14px', color: '#666', lineHeight: '1.5', marginTop: '6px' }}>
-              Managing comprehensive design strategy, client specifications, pattern engineering, and textile rendering.
+              Overseeing complex custom operations, business strategy planning, structural garment design, and traditional Armenian art engineering.
             </p>
           </div>
 
           <div style={{ marginBottom: '30px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '5px' }}>
-              <h4 style={{ margin: 0, color: '#3D1C22', fontSize: '16px' }}>Symphonic Choir Member & Fine Artist</h4>
-              <span style={{ fontSize: '13px', color: '#777', fontWeight: '600' }}>10-Year Position</span>
+              <h4 style={{ margin: 0, color: '#3D1C22', fontSize: '16px' }}>Symphonic Group Singer & Artist</h4>
+              <span style={{ fontSize: '13px', color: '#777', fontWeight: '600' }}>10-Year Tenure</span>
             </div>
-            <p style={{ margin: 0, fontSize: '14px', color: '#666', fontWeight: '600' }}>KOHAR Symphony Orchestra & Choir Group</p>
+            <p style={{ margin: 0, fontSize: '14px', color: '#666', fontWeight: '600' }}>KOHAR Symphony Orchestra & Choir Collective</p>
             <p style={{ fontSize: '14px', color: '#666', lineHeight: '1.5', marginTop: '6px' }}>
-              Represented state cultural heritage inside an elite global performance collective.
+              Promoted regional cultural identity across extensive global concert stages.
             </p>
           </div>
 
-          <h3 style={{ color: '#3D1C22', fontSize: '16px', letterSpacing: '1px', textTransform: 'uppercase', marginTop: '40px', marginBottom: '20px', borderBottom: '2px solid #3D1C22', paddingBottom: '5px' }}>Education & Qualifications</h3>
+          <h3 style={{ color: '#3D1C22', fontSize: '16px', letterSpacing: '1px', textTransform: 'uppercase', marginTop: '40px', marginBottom: '20px', borderBottom: '2px solid #3D1C22', paddingBottom: '5px' }}>Academic Baseline</h3>
           <ul style={{ paddingLeft: '20px', fontSize: '14px', lineHeight: '1.8', color: '#444' }}>
-            <li>🚀 <strong>AI for Frontend Development Track</strong> — Current System Studies (2026)</li>
+            <li>🚀 <strong>AI for Frontend Software Development</strong> — Applied Interaction Studies (2026)</li>
             <li>🎓 <strong>Master of Science in Engineering</strong> — State Engineering University of Armenia</li>
-            <li>💻 <strong>Web Programming & Graphic Design Certificate</strong> — Gyumri IT Center</li>
+            <li>💻 <strong>Web Programming & Interface Design</strong> — Gyumri Information Technologies Center</li>
             <li>🇺🇸 <strong>Academy for Women Entrepreneurs (AWE)</strong> — US Embassy Alumni</li>
           </ul>
         </div>
       </section>
 
-      {/* --- INTERACTIVE CONTACT ME --- */}
+      {/* --- INTERACTIVE DASHBOARD CONTACT --- */}
       <section id="contact" style={{ backgroundColor: '#EFE9E9', padding: '60px 0' }}>
         <div style={{ maxWidth: '600px', margin: '0 auto', padding: '0 20px', textAlign: 'center' }}>
-          <h2 style={{ color: '#3D1C22', fontSize: '26px', fontWeight: '700', marginBottom: '10px' }}>Let's Build Together</h2>
-          <p style={{ color: '#666', fontSize: '14px', marginBottom: '30px' }}>Drop a message directly to my development dashboard.</p>
+          <h2 style={{ color: '#3D1C22', fontSize: '26px', fontWeight: '700', marginBottom: '10px' }}>Initiate a Joint Project</h2>
+          <p style={{ color: '#666', fontSize: '14px', marginBottom: '30px' }}>Submit details to route communications into my terminal.</p>
           
           {submitted ? (
             <div style={{ backgroundColor: '#4CAF50', color: '#FFF', padding: '15px', borderRadius: '4px', fontWeight: 'bold' }}>
-              ✓ Message logged successfully!
+              ✓ Transmission logged securely!
             </div>
           ) : (
             <form onSubmit={handleContactSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
               <input 
                 type="email" 
-                placeholder="Your Email Address" 
+                placeholder="Your Contact Email" 
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -239,18 +239,27 @@ const NewPortfolio = () => {
               />
               <textarea 
                 rows={4} 
-                placeholder="Project details..." 
+                placeholder="Specify requirements or deployment pipeline properties..." 
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 required
                 style={{ padding: '14px', borderRadius: '4px', border: '1px solid #DDD', fontSize: '14px' }}
               />
               <button type="submit" style={{ backgroundColor: '#3D1C22', color: '#FFF', padding: '14px', borderRadius: '4px', border: 'none', fontWeight: 'bold', cursor: 'pointer' }}>
-                Send Message Securely
+                Transmit Logs Securely
               </button>
             </form>
           )}
         </div>
       </section>
 
-      <footer style
+      {/* --- STABLE FOOTER CONTROLLER --- */}
+      <footer style={{ backgroundColor: '#3D1C22', color: '#FFF', textAlign: 'center', padding: '25px', fontSize: '13px' }}>
+        © 2026 Kristina G. Zayimtsyan Couture — Frontend Engineer Portfolio.
+      </footer>
+
+    </div>
+  );
+};
+
+export default NewPortfolio;
