@@ -28,7 +28,7 @@ const NewPortfolio = () => {
         </div>
         <nav style={{ display: 'flex', gap: '30px' }}>
           <a href="#about" style={{ color: '#555', textDecoration: 'none', fontWeight: '500', fontSize: '14px' }}>About</a>
-          <a href="#ai-innovation" style={{ color: '#555', textDecoration: 'none', fontWeight: '500', fontSize: '14px' }}>AI Innovation</a>
+          <a href="#ai-innovation" style={{ color: '#555', textDecoration: 'none', fontWeight: '500', fontSize: '14px' }}>AI Video Greeting</a>
           <a href="#cv" style={{ color: '#555', textDecoration: 'none', fontWeight: '500', fontSize: '14px' }}>CV / Experience</a>
           <a href="#contact" style={{ backgroundColor: '#3D1C22', color: '#FFF', padding: '8px 16px', borderRadius: '4px', textDecoration: 'none', fontWeight: '600', fontSize: '13px' }}>Contact Me</a>
         </nav>
@@ -66,23 +66,30 @@ const NewPortfolio = () => {
         </div>
       </section>
 
-      {/* --- AI & D-ID INNOVATION --- */}
+      {/* --- PREMIUM VIDEO COMPONENT SECTION --- */}
       <section id="ai-innovation" style={{ backgroundColor: '#FFF', borderTop: '1px solid #EAEAEA', borderBottom: '1px solid #EAEAEA', padding: '60px 0' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 20px' }}>
           <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-            <h2 style={{ color: '#3D1C22', fontSize: '26px', fontWeight: '700' }}>AI Component Integration</h2>
-            <p style={{ color: '#666', fontSize: '15px' }}>Interactive testing area for automated avatars and dynamic layout tools.</p>
+            <h2 style={{ color: '#3D1C22', fontSize: '26px', fontWeight: '700' }}>Interactive Video Presentation</h2>
+            <p style={{ color: '#666', fontSize: '15px' }}>Watch my introductory video covering technical experience and creative focus.</p>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: '40px' }}>
+            {/* Custom high-end video player element */}
             <div style={{ background: '#FAF9F6', border: '1px solid #E0E0E0', borderRadius: '8px', padding: '24px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
-                <span style={{ fontWeight: '700', color: '#3D1C22', fontSize: '15px' }}>⚡ D-ID Avatar Integration</span>
-                <span style={{ fontSize: '11px', background: '#4CAF50', color: '#FFF', padding: '3px 8px', borderRadius: '12px', fontWeight: 'bold' }}>ACTIVE COMPONENT</span>
+                <span style={{ fontWeight: '700', color: '#3D1C22', fontSize: '15px' }}>🎥 Video Introduction Player</span>
+                <span style={{ fontSize: '11px', background: '#3D1C22', color: '#D4AF37', padding: '3px 8px', borderRadius: '12px', fontWeight: 'bold' }}>PREMIUM UX</span>
               </div>
-              <div style={{ backgroundColor: '#1A1A1A', height: '260px', borderRadius: '6px', color: '#FFF', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
-                <p style={{ margin: '0 0 10px 0', color: '#AAA', fontSize: '14px' }}>[ D-ID Video Generation Script Hook ]</p>
-                <button style={{ backgroundColor: '#3D1C22', border: '1px solid #D4AF37', color: '#D4AF37', padding: '10px 20px', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}>Animate My Portrait Video</button>
+              <div style={{ backgroundColor: '#000', borderRadius: '6px', overflow: 'hidden', boxShadow: '0 4px 15px rgba(0,0,0,0.1)' }}>
+                <video 
+                  controls 
+                  poster="/photos/profile-photo.jpg"
+                  style={{ width: '100%', height: '320px', display: 'block', objectFit: 'cover' }}
+                >
+                  <source src="/photos/intro-video.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
               </div>
             </div>
 
