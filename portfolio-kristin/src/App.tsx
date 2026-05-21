@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 const NewPortfolio = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  
+  // Audio state tracking
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const handleContactSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -13,9 +17,33 @@ const NewPortfolio = () => {
     setMessage('');
   };
 
+  // Toggle audio play/pause
+  const toggleAudio = () => {
+    if (!audioRef.current) return;
+    
+    if (isPlaying) {
+      audioRef.current.pause();
+      setIsPlaying(false);
+    } else {
+      audioRef.current.play().catch(err => console.log("Audio play interrupted:", err));
+      setIsPlaying(true);
+    }
+  };
+
+  const handleAudioEnded = () => {
+    setIsPlaying(false);
+  };
+
   return (
     <div style={{ backgroundColor: '#F9F8F6', minHeight: '100vh', fontFamily: 'sans-serif', color: '#2D2D2D' }}>
       
+      {/* Hidden HTML5 Audio Element */}
+      <audio 
+        ref={audioRef} 
+        src="/photos/intro-voice.mp3" 
+        onEnded={handleAudioEnded}
+      />
+
       {/* --- NAVIGATION BAR --- */}
       <header style={{ backgroundColor: '#FFF', position: 'sticky', top: 0, zIndex: 1000, borderBottom: '1px solid #EAEAEA', padding: '15px 40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -28,7 +56,7 @@ const NewPortfolio = () => {
         </div>
         <nav style={{ display: 'flex', gap: '30px' }}>
           <a href="#about" style={{ color: '#555', textDecoration: 'none', fontWeight: '500', fontSize: '14px' }}>About</a>
-          <a href="#ai-innovation" style={{ color: '#555', textDecoration: 'none', fontWeight: '500', fontSize: '14px' }}>AI Video Greeting</a>
+          <a href="#ai-voice-section" style={{ color: '#555', textDecoration: 'none', fontWeight: '500', fontSize: '14px' }}>AI Audio Profile</a>
           <a href="#cv" style={{ color: '#555', textDecoration: 'none', fontWeight: '500', fontSize: '14px' }}>CV / Experience</a>
           <a href="#contact" style={{ backgroundColor: '#3D1C22', color: '#FFF', padding: '8px 16px', borderRadius: '4px', textDecoration: 'none', fontWeight: '600', fontSize: '13px' }}>Contact Me</a>
         </nav>
@@ -66,44 +94,73 @@ const NewPortfolio = () => {
         </div>
       </section>
 
-      {/* --- PREMIUM VIDEO COMPONENT SECTION --- */}
-      <section id="ai-innovation" style={{ backgroundColor: '#FFF', borderTop: '1px solid #EAEAEA', borderBottom: '1px solid #EAEAEA', padding: '60px 0' }}>
+      {/* --- AI VOICE PRESENTATION COMPONENT --- */}
+      <section id="ai-voice-section" style={{ backgroundColor: '#FFF', borderTop: '1px solid #EAEAEA', borderBottom: '1px solid #EAEAEA', padding: '60px 0' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 20px' }}>
           <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-            <h2 style={{ color: '#3D1C22', fontSize: '26px', fontWeight: '700' }}>Interactive Video Presentation</h2>
-            <p style={{ color: '#666', fontSize: '15px' }}>Watch my introductory video covering technical experience and creative focus.</p>
+            <h2 style={{ color: '#3D1C22', fontSize: '26px', fontWeight: '700' }}>AI Voice Integration Overview</h2>
+            <p style={{ color: '#666', fontSize: '15px' }}>Click the interactive controller below to stream my technical background details.</p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: '40px' }}>
-            {/* Custom high-end video player element */}
-            <div style={{ background: '#FAF9F6', border: '1px solid #E0E0E0', borderRadius: '8px', padding: '24px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
-                <span style={{ fontWeight: '700', color: '#3D1C22', fontSize: '15px' }}>🎥 Video Introduction Player</span>
-                <span style={{ fontSize: '11px', background: '#3D1C22', color: '#D4AF37', padding: '3px 8px', borderRadius: '12px', fontWeight: 'bold' }}>PREMIUM UX</span>
+          <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1.2fr', gap: '40px', alignItems: 'center' }}>
+            
+            {/* Interactive Portrait Presentation Card */}
+            <div style={{ background: '#FAF9F6', border: '1px solid #E0E0E0', borderRadius: '12px', padding: '30px', textAlign: 'center', boxShadow: '0 4px 12px rgba(0,0,0,0.03)' }}>
+              <div style={{ position: 'relative', width: '220px', height: '220px', margin: '0 auto 20px auto', borderRadius: '50%', overflow: 'hidden', border: '3px solid #3D1C22', padding: '5px', backgroundColor: '#FFF' }}>
+                <img 
+                  src="/photos/profile-photo.jpg" 
+                  alt="Kristina" 
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }} 
+                />
+                {isPlaying && (
+                  <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(61, 28, 34, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <span style={{ color: '#FFF', fontSize: '12px', fontWeight: 'bold', letterSpacing: '1px', background: '#3D1C22', padding: '4px 10px', borderRadius: '12px' }}>🗣️ AUDIO PLAYING</span>
+                  </div>
+                )}
               </div>
-              <div style={{ backgroundColor: '#000', borderRadius: '6px', overflow: 'hidden', boxShadow: '0 4px 15px rgba(0,0,0,0.1)' }}>
-                <video 
-                  controls 
-                  poster="/photos/profile-photo.jpg"
-                  style={{ width: '100%', height: '320px', display: 'block', objectFit: 'cover' }}
-                >
-                  <source src="/photos/intro-video.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-              </div>
+
+              <h4 style={{ margin: '0 0 5px 0', color: '#3D1C22', fontSize: '18px', fontWeight: '700' }}>Kristina G. Zayimtsyan</h4>
+              <p style={{ margin: '0 0 20px 0', color: '#D4AF37', fontSize: '13px', fontWeight: '600', letterSpacing: '0.5px' }}>AI VOICE ASSISTANT COMPONENT</p>
+              
+              <button 
+                onClick={toggleAudio}
+                style={{ 
+                  backgroundColor: isPlaying ? '#D4AF37' : '#3D1C22', 
+                  color: isPlaying ? '#3D1C22' : '#FFF', 
+                  border: 'none', 
+                  padding: '14px 28px', 
+                  borderRadius: '30px', 
+                  fontSize: '14px', 
+                  fontWeight: 'bold', 
+                  cursor: 'pointer',
+                  boxShadow: '0 4px 10px rgba(0,0,0,0.15)',
+                  transition: 'all 0.3s ease',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '10px'
+                }}
+              >
+                {isPlaying ? (
+                  <>⏸ Stop Presentation</>
+                ) : (
+                  <>🔊 Listen to My AI Voice</>
+                )}
+              </button>
             </div>
 
-            <div style={{ backgroundColor: '#3D1C22', color: '#FFF', borderRadius: '8px', padding: '30px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-              <h3 style={{ color: '#D4AF37', marginTop: 0, fontSize: '20px' }}>Frontend AI Engineering</h3>
-              <p style={{ fontSize: '14px', lineHeight: '1.6', color: '#EAE9E9' }}>
-                Building UI architecture optimized for generative pipelines. This implementation dynamically links local resource folders directly to AI prompt environments for real-time creative asset processing.
+            {/* Content Display Card */}
+            <div style={{ backgroundColor: '#3D1C22', color: '#FFF', borderRadius: '8px', padding: '35px', minHeight: '280px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+              <h3 style={{ color: '#D4AF37', marginTop: 0, fontSize: '20px', letterSpacing: '0.5px' }}>System Architecture</h3>
+              <p style={{ fontSize: '14px', lineHeight: '1.6', color: '#EAE9E9', margin: '0 0 20px 0' }}>
+                This production component leverages HTML5 Audio ref nodes bound to state hooks. By mounting clean `.mp3` rendering tracks rather than heavyweight video wrappers, the layout loads instantly with flawless mobile compatibility and absolute responsive styling compliance.
               </p>
-              <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginTop: '15px' }}>
-                {['React', 'Next.js', 'Vercel', 'Google AI Studio', 'GitHub'].map((tech) => (
+              <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+                {['React Hooks', 'HTML5 Audio API', 'Ref Nodes', 'Vercel CDN', 'State Controls'].map((tech) => (
                   <span key={tech} style={{ backgroundColor: 'rgba(255,255,255,0.1)', padding: '5px 12px', borderRadius: '4px', fontSize: '12px', fontWeight: '600' }}>{tech}</span>
                 ))}
               </div>
             </div>
+
           </div>
         </div>
       </section>
@@ -196,12 +253,4 @@ const NewPortfolio = () => {
         </div>
       </section>
 
-      <footer style={{ backgroundColor: '#3D1C22', color: '#FFF', textAlign: 'center', padding: '25px', fontSize: '13px' }}>
-        © 2026 Kristina G. Zayimtsyan Couture — AI Frontend Portfolio Project.
-      </footer>
-
-    </div>
-  );
-};
-
-export default NewPortfolio;
+      <footer style
