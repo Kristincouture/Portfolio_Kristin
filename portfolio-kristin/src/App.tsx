@@ -75,7 +75,7 @@ const NewPortfolio = () => {
           </p>
           <div style={{ display: 'flex', gap: '15px' }}>
             <a href="#cv" style={{ backgroundColor: '#3D1C22', color: '#FFF', padding: '12px 24px', borderRadius: '4px', textDecoration: 'none', fontWeight: 'bold', fontSize: '14px' }}>View My CV</a>
-            <a href="/CV_Kristina.pdf" download style={{ backgroundColor: '#FFF', color: '#3D1C22', border: '1px solid #3D1C22', padding: '12px 24px', borderRadius: '4px', textDecoration: 'none', fontWeight: 'bold', fontSize: '14px' }}>Download PDF CV 📥</a>
+            <a href="/CV_Kristina.pdf" target="_blank" rel="noopener noreferrer" style={{ backgroundColor: '#3D1C22', color: '#FFF', padding: '10px 20px', borderRadius: '5px', textDecoration: 'none', fontWeight: 'bold', fontSize: '14px' }}>Download PDF CV 📥</a>
           </div>
         </div>
       </section>
