@@ -1,7 +1,12 @@
 {
+  "cleanUrls": true,
   "rewrites": [
     {
-      "source": "/((?!api/|static/|CV_Kristina.pdf).*)",
+      "source": "/CV_Kristina.pdf",
+      "destination": "/CV_Kristina.pdf"
+    },
+    {
+      "source": "/((?!static|assets).*)",
       "destination": "/index.html"
     }
   ]
