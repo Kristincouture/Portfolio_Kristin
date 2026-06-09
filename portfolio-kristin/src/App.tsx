@@ -1,20 +1,9 @@
 import React, { useState, useRef } from 'react';
+import { ContactForm } from './ContactForm';
 
 const NewPortfolio = () => {
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
-  const [submitted, setSubmitted] = useState(false);
-  
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
-
-  const handleContactSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
-    setEmail('');
-    setMessage('');
-  };
 
   const toggleAudio = () => {
     if (!audioRef.current) return;
@@ -214,40 +203,9 @@ const NewPortfolio = () => {
         </div>
       </section>
 
-      {/* --- INTERACTIVE DASHBOARD CONTACT --- */}
+      {/* --- INTEGRATED SECURE CONTACT SECTION --- */}
       <section id="contact" style={{ backgroundColor: '#EFE9E9', padding: '60px 0' }}>
-        <div style={{ maxWidth: '600px', margin: '0 auto', padding: '0 20px', textAlign: 'center' }}>
-          <h2 style={{ color: '#3D1C22', fontSize: '26px', fontWeight: '700', marginBottom: '10px' }}>Initiate a Joint Project</h2>
-          <p style={{ color: '#666', fontSize: '14px', marginBottom: '30px' }}>Submit details to route communications into my terminal.</p>
-          
-          {submitted ? (
-            <div style={{ backgroundColor: '#4CAF50', color: '#FFF', padding: '15px', borderRadius: '4px', fontWeight: 'bold' }}>
-              ✓ Transmission logged securely!
-            </div>
-          ) : (
-            <form onSubmit={handleContactSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-              <input 
-                type="email" 
-                placeholder="Your Contact Email" 
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                style={{ padding: '14px', borderRadius: '4px', border: '1px solid #DDD', fontSize: '14px' }}
-              />
-              <textarea 
-                rows={4} 
-                placeholder="Specify requirements or deployment pipeline properties..." 
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                required
-                style={{ padding: '14px', borderRadius: '4px', border: '1px solid #DDD', fontSize: '14px' }}
-              />
-              <button type="submit" style={{ backgroundColor: '#3D1C22', color: '#FFF', padding: '14px', borderRadius: '4px', border: 'none', fontWeight: 'bold', cursor: 'pointer' }}>
-                Transmit Logs Securely
-              </button>
-            </form>
-          )}
-        </div>
+        <ContactForm />
       </section>
 
       {/* --- FOOTER FIXED AND ALIGNED --- */}
