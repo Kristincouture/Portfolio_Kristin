@@ -3,11 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "antd": "^6.4.3",
     "axios": "^1.15.2",
     "react": "latest",
     "react-dom": "latest",
-    "react-scripts": "latest",
-    "react-markdown": "^10.1.0"
+    "react-markdown": "^10.1.0",
+    "react-scripts": "latest"
   },
   "scripts": {
     "start": "react-scripts start",
