@@ -1,8 +1,8 @@
 {
-    "rewrites": [
-      { 
-        "source": "/((?!assets/|public/|.*\\..*$).*)", 
-        "destination": "/index.html" 
-      }
-    ]
-  }
+  "rewrites": [
+    {
+      "source": "/((?!api/|static/|CV_Kristina.pdf).*)",
+      "destination": "/index.html"
+    }
+  ]
+}
